@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team Images Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-image { margin: 20px; padding: 10px; border: 1px solid #ccc; }
+        .test-image img { max-width: 200px; max-height: 200px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Team Images Test</h1>
+    
+    <div class="test-image">
+        <h3>Sneha SVG</h3>
+        <img src="/team/sneha.svg" alt="Sneha SVG" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="error" style="display:none;">Failed to load /team/sneha.svg</div>
+        <div class="success" id="sneha-status">Loading...</div>
+    </div>
+    
+    <div class="test-image">
+        <h3>Arya SVG</h3>
+        <img src="/team/arya.svg" alt="Arya SVG" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="error" style="display:none;">Failed to load /team/arya.svg</div>
+        <div class="success" id="arya-status">Loading...</div>
+    </div>
+    
+    <div class="test-image">
+        <h3>Vaibhavi SVG</h3>
+        <img src="/team/vaibhavi.svg" alt="Vaibhavi SVG" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="error" style="display:none;">Failed to load /team/vaibhavi.svg</div>
+        <div class="success" id="vaibhavi-status">Loading...</div>
+    </div>
+    
+    <div class="test-image">
+        <h3>Tejaswini SVG</h3>
+        <img src="/team/tejaswini.svg" alt="Tejaswini SVG" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="error" style="display:none;">Failed to load /team/tejaswini.svg</div>
+        <div class="success" id="tejaswini-status">Loading...</div>
+    </div>
+    
+    <script>
+        // Check if images loaded successfully
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                const statusEl = document.getElementById(img.alt.toLowerCase().replace(' ', '-') + '-status');
+                if (img.complete && img.naturalHeight !== 0) {
+                    statusEl.textContent = '✓ Loaded successfully!';
+                    statusEl.className = 'success';
+                } else {
+                    statusEl.textContent = '✗ Failed to load';
+                    statusEl.className = 'error';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
